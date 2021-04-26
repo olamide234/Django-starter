@@ -1,6 +1,19 @@
 <!-- home page -->
 {% extends "allpages/base.html" %} <!--this copies from the base.html file -->
+
 {% block maincontent %}
         <h1>Site Home Page</h1>
         <p>This is the site home page from allpages/templates/allpages/index.html</p>
+        <br>
+        <h4>Video links</h4>
+        <a href="{% url 'videos-thumbs' 1 %}">HTML/CSS</a><br>
+        <a href="{% url 'videos-thumbs' 2 %}">Javascript</a><br>
+        <a href="{% url 'videos-thumbs' 3 %}">Python</a><br>
+        <a href="{% url 'videos-thumbs' 4 %}">Django</a><br><br>
+        <!--Video Link should only be shown to the admin-->
+        {% if request.user.is_superuser%}
+        <a href="{% url 'videos-list' %}">Video List</a><br>
+        {% endif %}
+        
 {% endblock maincontent %}
+

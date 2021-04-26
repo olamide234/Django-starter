@@ -1,0 +1,83 @@
+<!-- home page -->
+{% extends "allpages/base.html" %} <!--this copies from the base.html file -->
+{% load crispy_forms_tags %}
+
+{% block maincontent %}
+<div class='the_form'>
+    <h1 id="formheading">
+        {% if form.instance.pk %}
+        Edit your Video
+        {% else %}
+        Add a New Video
+        {% endif %}
+    </h1>
+    <form method='post'>
+        {% csrf_token %}
+            {{ form|crispy }} 
+        {% comment %} the '.as_p' means put each form label in p(i.e paragraph) tags {% endcomment %}
+        <p>
+            {% if form.instance.pk %}
+            <input type= 'submit' value= 'Update'><br>
+            <!--to delete physically-->
+            <a href="{% url 'videos-delete' video.id %}">Delete Permanently</a>
+            {% else %}
+            <input type= 'submit' value= 'Create'>&nbsp;&nbsp;
+            <input type= 'reset' value= 'Reset'>
+            {% endif %}
+        </p>
+    </form>
+</div>
+{% endblock maincontent %}
+{% comment %} now using crispy forms in the above {% endcomment %}
+
+
+
+{% comment %}
+{% block headcontent %}
+<style>
+    .table-form{
+        width: 100%;
+        max-width: 600px;
+        border: solid 1px silver;
+        margin: 4em auto 0 auto;
+        padding: 10px;
+        border-radius: 4px
+    }
+    .table-form table {
+        width: 100%;
+    }
+    .table-form table th {
+        text-align: right;
+        vertical-align: top;
+        padding-right: 4px;
+        width: 100px
+    }
+    .table-form table input[type='text'] {
+        width: 100%
+    }
+    .table-form table textarea {
+        width: 100%;
+        height: 100px
+    }
+    .table-form table input[type='checkbox'] {
+        transform: scale(1.3);
+        margin-left: 6px;
+    } 
+</style>
+{% endblock headcontent %}
+
+{% block maincontent %}
+<div class='table-form'>
+    <form method='post'>
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }} 
+        </table>
+        {% comment %} the '.as_p' means put each form label in p(i.e paragraph) tags {% endcomment %}{% comment %}
+    <input type='submit' value='create'>
+    </form>
+</div>
+{% endblock maincontent %}
+{% endcomment %}
+
+{% comment %} another way to do this is by using crispy forms {% endcomment %}

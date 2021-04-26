@@ -1,6 +1,6 @@
 {% load static %}<!-- using django template language to add the stylesheet created -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -36,11 +36,23 @@
         <a href="{% url 'allpages-home' %}">Home</a> 
         <a href="{% url 'allpages-about' %}">About</a>
         <a href="{% url 'allpages-privacy' %}">Privacy</a>
-        <!-- Below is for test only, you don't put aadmin link on public site -->
+        <!-- Below is for test only, you don't put admin link on public site -->
+        <!--admin link should only be shown to the admin-->
+        {% if request.user.is_superuser%}
         <a href="{% url 'admin:index' %}">Admin</a>
+        {% endif %}
     </nav>
     <!-- main content section that goes under the nav -->
     <main>
+        <!-- Django alert messages -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class= "alert alert-{{message.tags}}"> <!-- 'alert alert-' is for bootstrap and if instead you wanna use css replace '...' with 'flash' -->
+                    {{message}}
+                </div>
+            {% endfor %}
+        {% endif %}
+
         {% block maincontent %}
 
         {% endblock maincontent %}

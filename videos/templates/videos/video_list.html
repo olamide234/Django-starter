@@ -1,0 +1,39 @@
+<!-- home page -->
+{% extends "allpages/base.html" %} <!--this copies from the base.html file -->
+{% load static %}
+
+{% block maincontent %}<style></style>
+        <h1>Videos</h1>
+        <p>Click on any row edit's icon to edit that video or click on any row's title to watch its video or 
+        <a href="{% url 'videos-create' %}">click here to create a new video></a></p>
+        
+        <table class='video_table'>
+            <tr>
+                <th>Edit</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Rating</th>
+            </tr>
+            {% for video in object_list %}
+            <tr>
+                <td>
+                <a href="{% url 'videos-update' video.id %}" class="fa fa-edit"></a>
+                </td>
+                
+                <td  style= "text-decoration: {% if video.is_active %} none {% else %} line-through{% endif %}">
+                    <a href='https://www.youtube.com/watch?v={{ video.youtube_vid }}' >
+                        {{ video.title }}
+                    </a>
+                </td>
+                <td>
+                    {{ video.author }}
+                </td>
+                <td>
+                    <div style= "width: calc(20% * {{video.stars_count}})">
+                    </div>
+                    <img src="{% static 'allpages/images/stars.png' %}" alt="{{video.stars_count}}" title="{{video.stars_count}}">
+                </td>
+            </tr>
+            {% endfor %}
+        </table>      
+{% endblock maincontent %}

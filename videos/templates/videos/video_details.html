@@ -1,0 +1,11 @@
+<!-- home page -->
+{% extends "allpages/base.html" %} <!--this copies from the base.html file -->
+
+{% block maincontent %}
+        <h1 id="formheading">{{video.title}}</h1>
+        {% comment %} <p>Click any thumbnail to watch the video</p><br> {% endcomment %}
+        <iframe src = "https://www.youtube.com/embed/{{video.youtube_vid}}" frameborder='0' allow='autoplay; encrypted-media' allowfullscreen>
+        </iframe>
+            
+{% endblock maincontent %}
+{% comment %} htttp://i3.ytimg.com/vi/ {% endcomment %}

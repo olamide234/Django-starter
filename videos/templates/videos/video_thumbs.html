@@ -1,0 +1,13 @@
+<!-- home page -->
+{% extends "allpages/base.html" %} <!--this copies from the base.html file -->
+{% block maincontent %}
+        <h1>Videos</h1>
+        <p>Click any thumbnail to watch the video</p><br>
+        {% for video in object_list %}
+            <a href="{% url 'videos-details' video.id %}">
+                <img src= "https://img.youtube.com/vi/{{video.youtube_vid}}/mqdefault.jpg", alt='{{video.title}}', title='{{video.title}} : {{video.description}}'> 
+            </a>
+        {% endfor %}
+{% endblock maincontent %}
+{% comment %} htttp://i3.ytimg.com/vi/ {% endcomment %}
+{% comment %} 'https://www.youtube.com/watch?v={{video.youtube_vid}}'> {% endcomment %}

@@ -1,0 +1,12 @@
+{% extends "allpages/base.html" %}
+{% block maincontent %}
+<form>
+    {% csrf_token %}
+    <h1>Delete Video</h1>
+    <p>Are you sure you want to delete {{video.title}}?</p>
+    <!--the button below deos the delete-->
+    {% comment %} <button type='submit'>Yes, Delete</button><br> {% endcomment %}
+    <input type= 'submit' value= 'Yes, Delete'><br>
+    <a href="{% url 'videos-list'  %}"> Cancel</a>
+</form>
+{% endblock maincontent %}

@@ -103,3 +103,96 @@ footer a:hover, footer a:active{
     color:white;
     text-decoration: none;
 }
+table {
+    border-collapse: solid 2px silver;
+    margin: 1rem auto;
+}
+table th, table td {
+    border: solid 2px silver;
+}
+table td:nth-child(1) {
+    text-align: center;
+}
+table td:nth-child(2) {
+    max-width: 700px;
+}
+table td:nth-child(3) {
+    max-width: 200px;
+}
+table td:nth-child(4) {
+    width: 100px;
+    position: relative;
+}
+table td:nth-child(4) div {
+    background-color: gold;
+    top: 0;
+    left: 0;
+    position: absolute;
+    height: 18px;
+    z-index: 100;
+}
+table td:nth-child(4) img {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 110;
+}
+table tr:nth-child(even) {
+    background-color: aliceblue;
+}
+table tr:hover {
+    cursor: pointer;
+    background-color: lightyellow;
+}
+.asteriskField {
+    display:none;
+    
+}
+.requiredField {
+    margin: 0;
+}
+.the_form {
+    width: 98%;
+    max-width: 800px;
+    margin:  0 auto;
+    border: solid 1px silver;
+    border-radius: 4px;
+    padding: 1%; 
+}
+#formheading {
+    margin: 1px 2px 2px 0;
+    font-size: 3vw;
+}
+p {
+    text-align: left;
+}
+#id_category_id,
+#id_skill_level_id {
+    width: 150px
+}
+#id_description {
+    height: 80px
+}
+iframe {
+    display: block;
+    width: 80%;
+    margin: 0 auto; 
+    height: calc(.5625 * 80vw);
+    min-width: 320px;
+    /* min-height is .5625 times min-width */
+    min-height: 180px;
+    max-width: 1024px;
+    /* max-height is .5625 times max-width */
+    max-height: 576px;
+    
+}
+/*reduce size margin on narrow screen*/ 
+@media screen and (max-width:800px){
+    main{
+        margin: 68px 0 48px 0;
+    }
+    iframe {
+        width: 96%
+    }
+}
